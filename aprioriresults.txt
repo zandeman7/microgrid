@@ -7,3 +7,9 @@ Rule: ('c13',) ==> ('n0',) , 0.553
 Rule: ('n0',) ==> ('c13',) , 0.106
 Rule: ('n0',) ==> ('c2',) , 0.116
 Rule: ('c2',) ==> ('n0',) , 0.607
+
+Here c1, c2 etc are houses, n is the night watt and t is total watt, and cr is credit ( not able to get any corelation for credit now)
+
+Yay !!
+
+So I see that houses c2, c9 and c13 do not use power in the night :D we can say that wit confidence of over 0.5 :D
