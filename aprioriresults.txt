@@ -1,3 +1,23 @@
+USING HOUSE NUMBER, TOTAL WATT, NIGHT WATT AND CREDIT VALUE
+
+
+item: ('c5',) , 0.091
+item: ('c7',) , 0.091
+item: ('c9',) , 0.091
+item: ('c2',) , 0.091
+item: ('t0',) , 0.148
+item: ('c13',) , 0.091
+item: ('c3',) , 0.091
+item: ('c1',) , 0.091
+item: ('c8',) , 0.091
+item: ('c4',) , 0.091
+item: ('c6',) , 0.091
+item: ('c10',) , 0.091
+item: ('n0',) , 0.474
+item: ('n0', 't0') , 0.148
+item: ('n0', 'c9') , 0.051
+item: ('c13', 'n0') , 0.050
+item: ('n0', 'c2') , 0.055
 ------------------------ RULES:
 Rule: ('n0',) ==> ('t0',) , 0.312
 Rule: ('t0',) ==> ('n0',) , 1.000
@@ -13,3 +33,10 @@ Here c1, c2 etc are houses, n is the night watt and t is total watt, and cr is c
 Yay !!
 
 So I see that houses c2, c9 and c13 do not use power in the night :D we can say that wit confidence of over 0.5 :D
+
+
+INCLUDING DATE AS A FACTOR:
+
+Getting the same result.. Trying to increase the combinations set to 4 but I am unable to.. Like once we find a confidence value for a term to be greater than 0.05 we move on tp joining those each pair in multiple combinations
+
+
