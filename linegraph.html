@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2.5px;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script>
+
+var margin = {top: 20, right: 200, bottom: 60, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+
+var x = d3.scale.linear()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var color = d3.scale.category10();
+
+var line = d3.svg.line()
+    .interpolate("basis")
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.power); });
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("data.csv", function(data) {
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "x"; }));
+
+
+  var seriesNames = d3.keys(data[0])
+      .filter(function(d) { return d !== "x"; })
+      .sort();
+
+
+  var series = color.domain().map(function(name) {
+    return {
+      name: name,
+      values: data.map(function(d) {
+        return {x: +d.x, power: +d[name]};
+      })
+    };
+  });
+
+  x.domain([0,23]);
+
+  y.domain([
+    d3.min(series, function(c) { return d3.min(c.values, function(v) { return v.power; }); }),
+    d3.max(series, function(c) { return d3.max(c.values, function(v) { return v.power; }); })
+  ]);
+  
+  
+  
+
+  // Add the x-axis.
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.svg.axis().scale(x).orient("bottom").ticks(10))
+    .append("text") 
+      .attr("x", 390)
+      .attr("y",30)
+      .attr("dy", ".71em")
+      .style("text-anchor", "middle")
+      .style("font-size", "14px") 
+      .text("Hour of the Day");
+
+
+  // Add the y-axis.
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(d3.svg.axis().scale(y).orient("left").ticks(10))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -200)
+      .attr("y", -40)
+      .attr("dy", ".71em")
+      .style("text-anchor", "middle")
+    .style("font-size", "14px") 
+      .text("Power Consumption (Watts)");
+
+// Adding lines
+  var user = svg.selectAll(".user")
+      .data(series)
+    .enter().append("g")
+      .attr("class", "user");
+
+  user.append("path")
+      .attr("class", "line")
+      .attr("d", function(d) { return line(d.values); })
+      .style("stroke", function(d) { return color(d.name); });
+      
+// Create Title.
+  svg.append("text")
+    .attr("x",390 )
+    .attr("y", 20)
+    .style("font-size", "24px") 
+    .style("text-decoration", "bold") 
+    .style("text-anchor", "middle")
+    .text("Power Usage In Kenya");
+
+// Creating legends for the diffferent type of users
+    var legend = svg.selectAll('svg')
+        .data(series)
+        .enter()
+      .append('g')
+        .attr('class', 'legend');
+
+    legend.append('rect')
+        .attr('x', width +10)
+        .attr('y', function(d, i){ return (i *  20);})
+        .attr('width', 15)
+        .attr('height', 15)
+        .style('fill', function(d) { 
+          return color(d.name);
+        });
+        
+    legend.append('text')
+        .attr('x', width +35)
+        .attr('y', function(d, i){ return (i *  20+12);})
+        .text(function(d,i){ return seriesNames[i]; })
+        .style("font-size","14px");
+});
+
+</script>
