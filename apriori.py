@@ -1,13 +1,13 @@
 """
-Description  : Simple Python implementation of the Apriori Algorithm
-Author 		: Abhinav Saini(abhi488@gmail.com)
-Credits		: Cesare Zavattari(cesare@ctrl-z-bg.org) for making suggestions and refactoring code
+Code from https://github.com/asaini/Apriori/blob/master/apriori.py
 
 Usage:
 	$python apriori.py -f DATASET.csv -s minSupport  -c minConfidence
 	
 	Eg.
 		$ python apriori.py -f DATASET.csv -s 0.15 -c 0.6
+		
+Used minsupport and minconfidence to be 0.05 each 
 
 """
 
