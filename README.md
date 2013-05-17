@@ -35,11 +35,19 @@ Coding Files and instructions
     
 2. DataMining_Project.ipynb
    
-   Using K means and Regression to cluster a set of 11 users and predict the usage behaviour of a new user data
+   Using K means to cluster a set of 11 users based on power usage and credit behaviour. Predict the usage behaviour of a new user data using regression
 
-  Resultant graphs and illustrations are generated in the ipython notebook 
+  Resultant graphs and illustrations are generated in the ipython notebook
 
 
-Graphical clustering result
+Graphical clustering results
 ---------------------------
 1. User_Watt_Usage.png
+2. User_Credit_Usage.png
+3. 
+
+
+Presentation
+------------
+
+The python notebook DataMining_Project.ipynb will be used for presentation
