@@ -44,7 +44,7 @@ Graphical clustering results
 ---------------------------
 1. User_Watt_Usage.png
 2. User_Credit_Usage.png
-3. 
+ 
 
 
 Presentation
