@@ -45,7 +45,8 @@ Graphical representation of clustering results
 1. User_Watt_Usage.png
 2. User_Credit_Usage.png
 3. linegrah.html (Html source file for visualizations)
- Data input for visualizations
+
+Data input for visualizations
 1. data.csv
 2. cr_users.csv
 
