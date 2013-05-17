@@ -40,7 +40,7 @@ Coding Files and instructions
   Resultant graphs and illustrations are generated in the ipython notebook
 
 
-Graphical clustering results
+Graphical representation of clustering results
 ---------------------------
 1. User_Watt_Usage.png
 2. User_Credit_Usage.png
